@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Life: Beginnings & Always - LGBTQ+ Visual Novel</title>
+    <meta name="description" content="Discover the critically acclaimed LGBTQ+ visual novel Our Life: Beginnings & Always. Experience customizable relationships and emotional storytelling in this free life simulation game.">
+    <link rel="canonical" href="https://joyverse.online/our-life">
+    <link rel="preconnect" href="https://gbpatch.itch.io">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "Our Life: Beginnings & Always",
+      "description": "Award-winning LGBTQ+ visual novel about relationship building and emotional growth",
+      "gamePlatform": "Web Browser",
+      "applicationCategory": "Visual Novel",
+      "genre": ["Life Simulation", "LGBTQ+"],
+      "author": "GB Patch Games"
+    }
+    </script>
+    
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #F5F5F7;
+            color: #1D1D1F;
+            line-height: 1.6;
+        }
+        
+        /* Container Styles (Tailwind-like) */
+        .container {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        @media (min-width: 640px) {
+            .container {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .container {
+                padding-left: 2rem;
+                padding-right: 2rem;
+                max-width: 1200px;
+            }
+        }
+        
+        /* Header Styles */
+        header {
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.25rem;
+            margin-bottom: 0.5rem;
+            color: #1D1D1F;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+        
+        .header-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1rem auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: block;
+        }
+        
+        @media (max-width: 640px) {
+            .subtitle {
+                display: none;
+            }
+        }
+        
+        /* Main Content Styles */
+        .game-section {
+            background-color: white;
+            border-radius: 12px;
+            border: 1px solid #D2D2D7;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .iframe-container {
+            width: 100%;
+            position: relative;
+        }
+        
+        .iframe-container iframe {
+            width: 100%;
+            border: none;
+        }
+        
+        @media (min-width: 768px) {
+            .iframe-container iframe {
+                min-height: 80vh;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .iframe-container iframe {
+                min-height: 70vh;
+            }
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 2rem 0;
+        }
+        
+        h2 {
+            font-size: 1.75rem;
+            margin: 1.5rem 0 1rem;
+            color: #1D1D1F;
+            border-bottom: 2px solid #007AFF;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .feature-list {
+            margin: 1.5rem 0;
+        }
+        
+        .feature-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #D2D2D7;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-item h3 {
+            color: #007AFF;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+        
+        .feature-flex {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .feature-flex {
+                flex-direction: row;
+                align-items: center;
+            }
+            
+            .feature-content {
+                flex: 1;
+            }
+            
+            .feature-image {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+            }
+        }
+        
+        .feature-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-image img:hover {
+            transform: scale(1.02);
+        }
+        
+        .wide-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            margin: 1rem 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .intro-section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border: 1px solid #D2D2D7;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .intro-section p {
+            margin-bottom: 1rem;
+        }
+        
+        /* Studio Info */
+        .studio-info {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid #D2D2D7;
+            text-align: center;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: #1D1D1F;
+            color: white;
+        }
+        
+        a {
+            color: #007AFF;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header class="container">
+        <h1>Our Life: Beginnings & Always - LGBTQ+ Visual Novel</h1>
+        <p class="subtitle">Build Meaningful Connections in This Wholesome Life Simulator</p>
+        <img src="https://img.itch.zone/aW1nLzcwMTIxNDMucG5n/315x250%23c/BalGQb.png" alt="Our Life: Beginnings & Always main image" class="header-img">
+    </header>
+    
+    <main class="container">
+        <article class="game-content">
+            <section class="intro-section">
+                <p>Embark on a heartfelt journey through life's most important moments in this award-winning visual novel.</p>
+                <img src="https://img.itch.zone/aW1nLzMwNjA4ODQuanBn/original/aKoNL0.jpg" alt="Our Life: Beginnings & Always story scene" class="wide-image">
+            </section>
+            
+            <section class="game-section">
+                <div class="iframe-container">
+                    <iframe 
+                        src="https://gbpatch.itch.io/our-life" 
+                        loading="lazy" 
+                        aria-label="Game Demo"
+                        title="Our Life: Beginnings & Always game demo">
+                    </iframe>
+                </div>
+            </section>
+            
+            <section class="features">
+                <h2>Experience a Heartwarming Coming-of-Age Story</h2>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-flex">
+                            <div class="feature-content">
+                                <h3>Over 20 Emotional Endings Based on Your Choices</h3>
+                                <p>Your decisions shape the story from childhood to adulthood, creating unique emotional journeys with every playthrough. Build relationships that evolve naturally through years of shared experiences.</p>
+                            </div>
+                            <div class="feature-image">
+                                <img src="https://img.itch.zone/aW1hZ2UvNDM0NTU0LzQ2MTI0NjMuanBn/347x500/5jNTPn.jpg" alt="Our Life: Beginnings & Always emotional storytelling" width="347" height="500">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2>Customizable Character Relationships</h2>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-flex">
+                            <div class="feature-image">
+                                <img src="https://img.itch.zone/aW1hZ2UvNDM0NTU0LzI5OTI5MDkuanBn/347x500/FLnWmV.jpg" alt="Our Life: Beginnings & Always character relationship builder" width="347" height="500">
+                            </div>
+                            <div class="feature-content">
+                                <h3>Dynamic Character Growth from Childhood to Adulthood</h3>
+                                <p>Watch relationships evolve over time as you navigate life's challenges together with memorable characters. Customize your appearance, personality, and interests at each life stage to create your unique story.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <img src="https://img.itch.zone/aW1hZ2UvNDM0NTU0LzQ2MTI0MjEucG5n/347x500/HTitwf.png" alt="Our Life: Beginnings & Always character customization" class="wide-image">
+                    </div>
+                </div>
+                
+                <h2>Play Free Life Simulation Game</h2>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-flex">
+                            <div class="feature-content">
+                                <h3>100% Free Relationship-Building Gameplay</h3>
+                                <p>Experience this critically acclaimed visual novel at no cost while enjoying deep character customization and emotional storytelling. Explore a world where your choices genuinely matter.</p>
+                            </div>
+                            <div class="feature-image">
+                                <img src="https://img.itch.zone/aW1hZ2UvNDM0NTU0LzMyMzI3MjMuanBn/347x500/0rblYL.jpg" alt="Our Life: Beginnings & Always gameplay screenshot" width="347" height="500">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-flex">
+                            <div class="feature-image">
+                                <img src="https://img.itch.zone/aW1hZ2UvNDM0NTU0LzI5OTI4ODQuanBn/347x500/M14ghM.jpg" alt="Our Life: Beginnings & Always additional gameplay scene" width="347" height="500">
+                            </div>
+                            <div class="feature-content">
+                                <h3>Create Your Own Coming-of-Age Story</h3>
+                                <p>With multiple play styles and paths, every decision shapes your unique journey through life's most important moments. Form lasting bonds and create memories that feel genuinely personal.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="studio-info">
+                <p>Created by indie developer GB Patch Games, supporting diverse storytelling in gaming</p>
+            </section>
+        </article>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 joyverse.online | <a href="#" aria-label="Privacy Policy">Privacy Policy</a></p>
+        </div>
+    </footer>
+</body>
+</html>
