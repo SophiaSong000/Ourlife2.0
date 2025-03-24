@@ -3,348 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Life: Beginnings & Always - LGBTQ+ Visual Novel</title>
-    <meta name="description" content="Discover the critically acclaimed LGBTQ+ visual novel Our Life: Beginnings & Always. Experience customizable relationships and emotional storytelling in this free life simulation game.">
-    <link rel="canonical" href="https://joyverse.online/our-life">
-    <link rel="preconnect" href="https://gbpatch.itch.io">
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "VideoGame",
-      "name": "Our Life: Beginnings & Always",
-      "description": "Award-winning LGBTQ+ visual novel about relationship building and emotional growth",
-      "gamePlatform": "Web Browser",
-      "applicationCategory": "Visual Novel",
-      "genre": ["Life Simulation", "LGBTQ+"],
-      "author": "GB Patch Games"
-    }
-    </script>
-    
+    <title>Our Life: Beginnings & Always | Play Online Visual Novel | JoyVerse</title>
+    <meta name="description" content="Play 'Our Life: Beginnings & Always', an interactive visual novel where your choices shape your character's journey from childhood to adulthood.">
+    <link rel="canonical" href="https://joyverse.online">
+    <meta name="keywords" content="Our Life Beginnings & Always, visual novel, interactive story game, GB Patch Games, LGBTQ+ game, coming of age story, life simulation">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        /* Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --apple-blue: #007AFF;
+            --apple-purple: #5E5CE6;
+            --apple-pink: #FF2D55;
+            --apple-orange: #FF9500;
+            --apple-yellow: #FFCC00;
+            --apple-green: #34C759;
+            --apple-gray: #8E8E93;
+            --apple-light-gray: #F2F2F7;
         }
-        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #F5F5F7;
-            color: #1D1D1F;
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+            color: #333333;
+            background-color: var(--apple-light-gray);
         }
-        
-        /* Container Styles (Tailwind-like) */
-        .container {
-            width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 1rem;
-            padding-right: 1rem;
+        .game-container {
+            aspect-ratio: 16/9;
+            max-height: 80vh;
         }
-        
-        @media (min-width: 640px) {
-            .container {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
-            }
+        .btn-primary {
+            background-color: var(--apple-blue);
+            transition: all 0.3s ease;
         }
-        
-        @media (min-width: 1024px) {
-            .container {
-                padding-left: 2rem;
-                padding-right: 2rem;
-                max-width: 1200px;
-            }
+        .btn-primary:hover {
+            background-color: var(--apple-purple);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        
-        /* Header Styles */
-        header {
-            padding: 2rem 0;
-            text-align: center;
+        .gradient-text {
+            background: linear-gradient(to right, var(--apple-blue), var(--apple-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
-        
-        h1 {
-            font-size: 2.25rem;
-            margin-bottom: 0.5rem;
-            color: #1D1D1F;
+        .feature-card {
+            border-top: 3px solid var(--apple-blue);
+            transition: all 0.3s ease;
         }
-        
-        .subtitle {
-            font-size: 1.25rem;
-            color: #555;
-            margin-bottom: 1.5rem;
-        }
-        
-        .header-img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin: 1rem auto;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            display: block;
-        }
-        
-        @media (max-width: 640px) {
-            .subtitle {
-                display: none;
-            }
-        }
-        
-        /* Main Content Styles */
-        .game-section {
-            background-color: white;
-            border-radius: 12px;
-            border: 1px solid #D2D2D7;
-            overflow: hidden;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-        
-        .iframe-container {
-            width: 100%;
-            position: relative;
-        }
-        
-        .iframe-container iframe {
-            width: 100%;
-            border: none;
-        }
-        
-        @media (min-width: 768px) {
-            .iframe-container iframe {
-                min-height: 80vh;
-            }
-        }
-        
-        @media (max-width: 767px) {
-            .iframe-container iframe {
-                min-height: 70vh;
-            }
-        }
-        
-        /* Features Section */
-        .features {
-            padding: 2rem 0;
-        }
-        
-        h2 {
-            font-size: 1.75rem;
-            margin: 1.5rem 0 1rem;
-            color: #1D1D1F;
-            border-bottom: 2px solid #007AFF;
-            padding-bottom: 0.5rem;
-            display: inline-block;
-        }
-        
-        .feature-list {
-            margin: 1.5rem 0;
-        }
-        
-        .feature-item {
-            background-color: white;
-            border-radius: 8px;
-            padding: 1.25rem;
-            margin-bottom: 1.5rem;
-            border: 1px solid #D2D2D7;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        
-        .feature-item:hover {
+        .feature-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
         }
-        
-        .feature-item h3 {
-            color: #007AFF;
-            margin-bottom: 0.75rem;
-            font-size: 1.3rem;
+        .feature-card:nth-child(2) {
+            border-top-color: var(--apple-purple);
         }
-        
-        .feature-flex {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+        .feature-card:nth-child(3) {
+            border-top-color: var(--apple-pink);
         }
-        
-        @media (min-width: 768px) {
-            .feature-flex {
-                flex-direction: row;
-                align-items: center;
-            }
-            
-            .feature-content {
-                flex: 1;
-            }
-            
-            .feature-image {
-                flex: 1;
-                display: flex;
-                justify-content: center;
-            }
-        }
-        
-        .feature-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s ease;
-        }
-        
-        .feature-image img:hover {
-            transform: scale(1.02);
-        }
-        
-        .wide-image {
-            width: 100%;
-            max-height: 400px;
-            object-fit: cover;
-            margin: 1rem 0;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-        }
-        
-        .intro-section {
-            background-color: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            text-align: center;
-            border: 1px solid #D2D2D7;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-        
-        .intro-section p {
-            margin-bottom: 1rem;
-        }
-        
-        /* Studio Info */
-        .studio-info {
-            background-color: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            border: 1px solid #D2D2D7;
-            text-align: center;
-        }
-        
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem 0;
-            background-color: #1D1D1F;
-            color: white;
-        }
-        
-        a {
-            color: #007AFF;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        
-        a:hover {
-            color: #0056b3;
+        .feature-card:nth-child(4) {
+            border-top-color: var(--apple-green);
         }
     </style>
 </head>
 <body>
-    <header class="container">
-        <h1>Our Life: Beginnings & Always - LGBTQ+ Visual Novel</h1>
-        <p class="subtitle">Build Meaningful Connections in This Wholesome Life Simulator</p>
-        <img src="https://img.itch.zone/aW1nLzcwMTIxNDMucG5n/315x250%23c/BalGQb.png" alt="Our Life: Beginnings & Always main image" class="header-img">
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center">
+            <div class="text-center md:text-left mb-4 md:mb-0">
+                <a href="/" class="text-2xl font-bold text-blue-600">JoyVerse</a>
+                <p class="text-sm text-gray-600">Your Gateway to Interactive Stories</p>
+            </div>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#game" class="hover:text-blue-600 transition-colors">Play Game</a></li>
+                    <li><a href="#features" class="hover:text-blue-600 transition-colors">Features</a></li>
+                    <li><a href="#about" class="hover:text-blue-600 transition-colors">About</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    
-    <main class="container">
-        <article class="game-content">
-            <section class="intro-section">
-                <p>Embark on a heartfelt journey through life's most important moments in this award-winning visual novel.</p>
-                <img src="https://img.itch.zone/aW1nLzMwNjA4ODQuanBn/original/aKoNL0.jpg" alt="Our Life: Beginnings & Always story scene" class="wide-image">
-            </section>
-            
-            <section class="game-section">
-                <div class="iframe-container">
-                    <iframe 
-                        src="https://gbpatch.itch.io/our-life" 
-                        loading="lazy" 
-                        aria-label="Game Demo"
-                        title="Our Life: Beginnings & Always game demo">
-                    </iframe>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="py-12 md:py-20 bg-white">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 gradient-text leading-tight">Our Life: Beginnings & Always</h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-gray-700">A heartwarming visual novel where your choices shape your character's journey from childhood to adulthood.</p>
+                <a href="#game" class="btn-primary text-white font-bold py-3 px-8 rounded-full inline-block text-lg">Play Now</a>
+            </div>
+        </section>
+
+        <!-- Game Section -->
+        <section id="game" class="py-12 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-center">Play Our Life: Beginnings & Always</h2>
+                <div class="game-container w-full bg-black mx-auto rounded-lg overflow-hidden shadow-xl">
+                    <iframe src="https://gbpatch.itch.io/our-life" frameborder="0" width="100%" height="100%" allowfullscreen></iframe>
                 </div>
-            </section>
-            
-            <section class="features">
-                <h2>Experience a Heartwarming Coming-of-Age Story</h2>
-                <div class="feature-list">
-                    <div class="feature-item">
-                        <div class="feature-flex">
-                            <div class="feature-content">
-                                <h3>Over 20 Emotional Endings Based on Your Choices</h3>
-                                <p>Your decisions shape the story from childhood to adulthood, creating unique emotional journeys with every playthrough. Build relationships that evolve naturally through years of shared experiences.</p>
-                            </div>
-                            <div class="feature-image">
-                                <img src="https://img.itch.zone/aW1hZ2UvNDM0NTU0LzQ2MTI0NjMuanBn/347x500/5jNTPn.jpg" alt="Our Life: Beginnings & Always emotional storytelling" width="347" height="500">
-                            </div>
-                        </div>
-                    </div>
+                <div class="mt-8 text-center">
+                    <p class="text-gray-700 mb-6">Experience the full version directly in your browser - no download required!</p>
+                    <a href="https://gbpatch.itch.io/our-life" target="_blank" rel="noopener noreferrer" class="btn-primary text-white font-bold py-2 px-6 rounded-full inline-block">Visit Official Page</a>
                 </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-12 text-center">Game Features</h2>
                 
-                <h2>Customizable Character Relationships</h2>
-                <div class="feature-list">
-                    <div class="feature-item">
-                        <div class="feature-flex">
-                            <div class="feature-image">
-                                <img src="https://img.itch.zone/aW1hZ2UvNDM0NTU0LzI5OTI5MDkuanBn/347x500/FLnWmV.jpg" alt="Our Life: Beginnings & Always character relationship builder" width="347" height="500">
-                            </div>
-                            <div class="feature-content">
-                                <h3>Dynamic Character Growth from Childhood to Adulthood</h3>
-                                <p>Watch relationships evolve over time as you navigate life's challenges together with memorable characters. Customize your appearance, personality, and interests at each life stage to create your unique story.</p>
-                            </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="feature-card bg-white p-6 rounded-lg shadow-md">
+                        <div class="text-blue-600 text-4xl mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                            </svg>
                         </div>
+                        <h3 class="text-xl font-bold mb-2">Customizable Experience</h3>
+                        <p class="text-gray-600">Personalize your character's appearance, personality, and relationships throughout different life stages.</p>
                     </div>
-                    <div class="feature-item">
-                        <img src="https://img.itch.zone/aW1hZ2UvNDM0NTU0LzQ2MTI0MjEucG5n/347x500/HTitwf.png" alt="Our Life: Beginnings & Always character customization" class="wide-image">
+                    
+                    <div class="feature-card bg-white p-6 rounded-lg shadow-md">
+                        <div class="text-purple-600 text-4xl mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Meaningful Relationships</h3>
+                        <p class="text-gray-600">Form deep connections with memorable characters as you grow up together in a coastal town.</p>
+                    </div>
+                    
+                    <div class="feature-card bg-white p-6 rounded-lg shadow-md">
+                        <div class="text-pink-600 text-4xl mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Life-Changing Choices</h3>
+                        <p class="text-gray-600">Every decision shapes your story and affects how others perceive you throughout your life journey.</p>
+                    </div>
+                    
+                    <div class="feature-card bg-white p-6 rounded-lg shadow-md">
+                        <div class="text-green-600 text-4xl mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Multiple Endings</h3>
+                        <p class="text-gray-600">Discover various endings based on your choices, offering high replay value and unique experiences.</p>
                     </div>
                 </div>
+            </div>
+        </section>
+        
+        <!-- About Section -->
+        <section id="about" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-center">About Our Life: Beginnings & Always</h2>
                 
-                <h2>Play Free Life Simulation Game</h2>
-                <div class="feature-list">
-                    <div class="feature-item">
-                        <div class="feature-flex">
-                            <div class="feature-content">
-                                <h3>100% Free Relationship-Building Gameplay</h3>
-                                <p>Experience this critically acclaimed visual novel at no cost while enjoying deep character customization and emotional storytelling. Explore a world where your choices genuinely matter.</p>
-                            </div>
-                            <div class="feature-image">
-                                <img src="https://img.itch.zone/aW1hZ2UvNDM0NTU0LzMyMzI3MjMuanBn/347x500/0rblYL.jpg" alt="Our Life: Beginnings & Always gameplay screenshot" width="347" height="500">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-flex">
-                            <div class="feature-image">
-                                <img src="https://img.itch.zone/aW1hZ2UvNDM0NTU0LzI5OTI4ODQuanBn/347x500/M14ghM.jpg" alt="Our Life: Beginnings & Always additional gameplay scene" width="347" height="500">
-                            </div>
-                            <div class="feature-content">
-                                <h3>Create Your Own Coming-of-Age Story</h3>
-                                <p>With multiple play styles and paths, every decision shapes your unique journey through life's most important moments. Form lasting bonds and create memories that feel genuinely personal.</p>
-                            </div>
-                        </div>
+                <div class="max-w-4xl mx-auto">
+                    <p class="mb-6 text-lg">Our Life: Beginnings & Always is an immersive visual novel developed by GB Patch Games that takes you through four life stages - childhood, adolescence, teenage years, and young adulthood. Set in the charming coastal town of Sunset Bird, you'll grow alongside your childhood friend and potential love interest, Derek Flores.</p>
+                    
+                    <p class="mb-6 text-lg">What makes this visual novel special is its deep customization options. You can change your character's appearance, personality traits, and interests at the beginning of each life stage, reflecting how people naturally evolve over time.</p>
+                    
+                    <h3 class="text-2xl font-bold mt-10 mb-4">Key Game Elements:</h3>
+                    <ul class="list-disc pl-8 mb-8 space-y-2">
+                        <li class="text-lg">Inclusive character customization with options for pronouns, appearance, and personality traits</li>
+                        <li class="text-lg">Branching storylines based on your choices and relationship development</li>
+                        <li class="text-lg">LGBTQ+ friendly narrative with romance options</li>
+                        <li class="text-lg">Beautiful artwork and engaging soundtrack</li>
+                        <li class="text-lg">Heartwarming coming-of-age story that explores friendship, family, and personal growth</li>
+                    </ul>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-600 mt-8">
+                        <h3 class="text-xl font-bold mb-2">Community Recognition</h3>
+                        <p class="text-gray-700">"Our Life: Beginnings & Always" has received widespread acclaim for its heartfelt storytelling, inclusive representation, and player-centric design, making it one of the most beloved visual novels in recent years.</p>
                     </div>
                 </div>
-            </section>
-            
-            <section class="studio-info">
-                <p>Created by indie developer GB Patch Games, supporting diverse storytelling in gaming</p>
-            </section>
-        </article>
+            </div>
+        </section>
     </main>
-    
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 joyverse.online | <a href="#" aria-label="Privacy Policy">Privacy Policy</a></p>
+
+    <footer class="bg-gray-800 text-white py-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">JoyVerse</h3>
+                    <p class="text-gray-400">Your gateway to interactive stories and visual novels.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#game" class="text-gray-400 hover:text-white transition-colors">Play Game</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 JoyVerse. "Our Life: Beginnings & Always" is developed by GB Patch Games.</p>
+            </div>
         </div>
     </footer>
 </body>
