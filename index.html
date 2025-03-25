@@ -78,7 +78,7 @@ const AINavigationSite = () => {
         },
         { 
           name: "创意变现新时代", 
-          url: "https://scys.com/articleDetail/xq_topic/4848511545851418",
+          url: "https://scys.com/articleDetail/xx_topic/4848511545851418",
           description: "只靠想法就能赚钱的时代"
         }
       ]
@@ -87,6 +87,7 @@ const AINavigationSite = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
+    // 搜索逻辑
     console.log('搜索:', searchTerm);
   };
 
@@ -116,77 +117,40 @@ const AINavigationSite = () => {
 
       {/* 导航区域 */}
       <main className="max-w-6xl mx-auto px-4 py-8">
-        <div className="flex flex-col md:flex-row gap-6">
-          <div className="md:w-1/2 space-y-6">
-            {navigationSections.slice(0, 4).map((section, index) => (
-              <div 
-                key={index} 
-                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
-              >
-                <div className="bg-blue-50 px-4 py-3 border-b border-gray-200">
-                  <h2 className="text-xl font-semibold text-blue-700">{section.title}</h2>
-                </div>
-                <ul className="divide-y divide-gray-100">
-                  {section.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="group">
-                      <a 
-                        href={item.url} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="block px-4 py-3 hover:bg-blue-50 transition-colors duration-200 flex justify-between items-center"
-                      >
-                        <div>
-                          <span className="text-gray-700 group-hover:text-blue-600 font-medium">{item.name}</span>
-                          {item.description && (
-                            <p className="text-xs text-gray-500 mt-1">{item.description}</p>
-                          )}
-                        </div>
-                        <ExternalLink 
-                          className="text-gray-400 group-hover:text-blue-500" 
-                          size={16} 
-                        />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+        <div className="grid md:grid-cols-3 gap-6">
+          {navigationSections.map((section, index) => (
+            <div 
+              key={index} 
+              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+            >
+              <div className="bg-blue-50 px-4 py-3 border-b border-gray-200">
+                <h2 className="text-xl font-semibold text-blue-700">{section.title}</h2>
               </div>
-            ))}
-          </div>
-          <div className="md:w-1/2 space-y-6">
-            {navigationSections.slice(4).map((section, index) => (
-              <div 
-                key={index} 
-                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
-              >
-                <div className="bg-blue-50 px-4 py-3 border-b border-gray-200">
-                  <h2 className="text-xl font-semibold text-blue-700">{section.title}</h2>
-                </div>
-                <ul className="divide-y divide-gray-100">
-                  {section.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="group">
-                      <a 
-                        href={item.url} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="block px-4 py-3 hover:bg-blue-50 transition-colors duration-200 flex justify-between items-center"
-                      >
-                        <div>
-                          <span className="text-gray-700 group-hover:text-blue-600 font-medium">{item.name}</span>
-                          {item.description && (
-                            <p className="text-xs text-gray-500 mt-1">{item.description}</p>
-                          )}
-                        </div>
-                        <ExternalLink 
-                          className="text-gray-400 group-hover:text-blue-500" 
-                          size={16} 
-                        />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+              <ul className="divide-y divide-gray-100">
+                {section.items.map((item, itemIndex) => (
+                  <li key={itemIndex} className="group">
+                    <a 
+                      href={item.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="block px-4 py-3 hover:bg-blue-50 transition-colors duration-200 flex justify-between items-center"
+                    >
+                      <div>
+                        <span className="text-gray-700 group-hover:text-blue-600 font-medium">{item.name}</span>
+                        {item.description && (
+                          <p className="text-xs text-gray-500 mt-1">{item.description}</p>
+                        )}
+                      </div>
+                      <ExternalLink 
+                        className="text-gray-400 group-hover:text-blue-500" 
+                        size={16} 
+                      />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </main>
 
