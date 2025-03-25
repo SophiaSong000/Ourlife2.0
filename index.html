@@ -1,381 +1,201 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Play the best online games for free at Joyverse Online - including visual novels, simulations, rhythm games and more!">
-    <title>Joyverse Online - Free Browser Games Portal</title>
-    <link rel="canonical" href="https://joyverse.online/">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
-    <style>
-        :root {
-            --apple-blue: #007AFF;
-            --apple-green: #34C759;
-            --apple-orange: #FF9500;
-            --apple-red: #FF3B30;
-            --apple-purple: #AF52DE;
-            --apple-gray: #8E8E93;
-            --apple-background: #F2F2F7;
+import React, { useState } from 'react';
+import { Search, ExternalLink } from 'lucide-react';
+
+const AINavigationSite = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const navigationSections = [
+    {
+      title: "需求调研",
+      items: [
+        { name: "谷歌下拉词", url: "https://www.searchsuggest.tips/?keyword=" },
+        { name: "Toolify榜单", url: "https://www.toolify.ai/Best-AI-Tools-revenue" },
+        { name: "AI需求列表", url: "https://theresanaiforthat.com/requests" },
+        { name: "关键词难度", url: "https://ahrefs.com/keyword-difficulty" }
+      ]
+    },
+    {
+      title: "上站必备",
+      items: [
+        { name: "域名查询", url: "https://leandomainsearch.com/" },
+        { name: "域名注册", url: "https://spaceshipi.com" },
+        { name: "代码托管", url: "https://github.com" },
+        { name: "数据后台", url: "https://search.google.com/search-console" }
+      ]
+    },
+    {
+      title: "竞品调研",
+      items: [
+        { name: "流量分析", url: "https://aitdk.com" },
+        { name: "外链查看", url: "https://ahrefs.com/free-seo-tools" },
+        { name: "网站关键词", url: "https://semrush.com" }
+      ]
+    },
+    {
+      title: "项目模版",
+      items: [
+        { name: "Dynamic Log", url: "https://github.com/openRin/Rin" },
+        { name: "NextJS Boilerplate", url: "https://github.com/ixartz/Next-js-Boilerplate" },
+        { name: "SaaS Boilerplate", url: "https://github.com/ixartz/SaaS-Boilerplate" },
+        { name: "免费落地页模版", url: "https://github.com/ixartz/Next-JS-Landing-Page-Starter-Template" }
+      ]
+    },
+    {
+      title: "导航站资源",
+      items: [
+        { name: "Fre123资源", url: "https://github.com/fre123-com/fre123-nav/" },
+        { name: "静态响应式网站", url: "https://github.com/WebStackPage/WebStackPage.github.io" },
+        { name: "GPTs Store", url: "https://github.com/all-in-aigc/gpts-works" }
+      ]
+    },
+    {
+      title: "行业资讯",
+      items: [
+        { 
+          name: "Reddit子社区", 
+          url: "https://liberating-doll-b8a.notion.site/Reddit-1a8e8aed91b18021839ecba8b74e530b",
+          description: "AI相关Reddit社区资源"
+        },
+        { 
+          name: "谷歌搜索中心SEO", 
+          url: "https://developers.google.com/search/docs/fundamentals/creating-helpful-content?hl=zh-cn",
+          description: "SEO基础知识指南"
         }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            background-color: var(--apple-background);
+      ]
+    },
+    {
+      title: "创业洞察",
+      items: [
+        { 
+          name: "独立开发者指南", 
+          url: "https://scys.com/articleDetail/xq_topic/1525814845844482",
+          description: "关于成为独立开发者的深度思考"
+        },
+        { 
+          name: "AI编程赛道", 
+          url: "https://scys.com/articleDetail/xq_topic/2858151258225521",
+          description: "构建业务而非简单应用"
+        },
+        { 
+          name: "创意变现新时代", 
+          url: "https://scys.com/articleDetail/xq_topic/4848511545851418",
+          description: "只靠想法就能赚钱的时代"
         }
-        
-        .game-iframe {
-            width: 100%;
-            height: 600px;
-            border: none;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        
-        .game-card {
-            transition: transform 0.3s ease;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        
-        .game-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .search-bar {
-            border-radius: 20px;
-        }
-        
-        .apple-button {
-            background-color: var(--apple-blue);
-            color: white;
-            border-radius: 20px;
-            padding: 8px 16px;
-            transition: all 0.3s ease;
-        }
-        
-        .apple-button:hover {
-            background-color: #0069d9;
-            transform: scale(1.05);
-        }
-        
-        .category-visual-novel {
-            border-left: 4px solid var(--apple-purple);
-        }
-        
-        .category-simulation {
-            border-left: 4px solid var(--apple-green);
-        }
-        
-        .category-rhythm {
-            border-left: 4px solid var(--apple-orange);
-        }
-        
-        .mobile-menu {
-            display: none;
-        }
-        
-        @media (max-width: 768px) {
-            .desktop-menu {
-                display: none;
-            }
-            
-            .mobile-menu {
-                display: block;
-            }
-            
-            .game-iframe {
-                height: 400px;
-            }
-            
-            .sidebar {
-                display: none;
-            }
-            
-            .main-content {
-                width: 100%;
-            }
-        }
-    </style>
-</head>
-<body>
-    <header class="bg-white shadow-md">
-        <div class="container mx-auto px-4 py-3">
-            <div class="flex justify-between items-center">
-                <a href="/" class="text-2xl font-bold text-gray-800">
-                    Joyverse<span class="text-blue-500">.online</span>
-                </a>
-                
-                <!-- Desktop Menu -->
-                <nav class="desktop-menu">
-                    <ul class="flex space-x-6">
-                        <li><a href="/" class="hover:text-blue-500">Home</a></li>
-                        <li class="relative group">
-                            <a href="#" class="hover:text-blue-500">Game Categories</a>
-                            <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
-                                <div class="py-1">
-                                    <a href="#visual-novel" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Visual Novels</a>
-                                    <a href="#simulation" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Simulation Games</a>
-                                    <a href="#rhythm" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Rhythm Games</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li><a href="#about" class="hover:text-blue-500">About</a></li>
-                        <li><a href="#contact" class="hover:text-blue-500">Contact</a></li>
-                    </ul>
-                </nav>
-                
-                <!-- Mobile Menu Button -->
-                <button class="mobile-menu text-gray-500 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
+      ]
+    }
+  ];
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    console.log('搜索:', searchTerm);
+  };
+
+  return (
+    <div className="bg-gray-50 min-h-screen text-gray-900">
+      {/* 头部搜索区域 */}
+      <header className="bg-white shadow-sm">
+        <div className="max-w-6xl mx-auto px-4 py-6">
+          <h1 className="text-3xl font-bold text-center text-blue-600 mb-4">AI 导航站</h1>
+          <form onSubmit={handleSearch} className="max-w-xl mx-auto">
+            <div className="relative">
+              <input 
+                type="text" 
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="搜索资源、工具或网站..." 
+                className="w-full pl-10 pr-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <Search 
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" 
+                size={20} 
+              />
             </div>
-            
-            <!-- Mobile Menu -->
-            <div class="mobile-menu hidden mt-4">
-                <ul class="bg-white rounded-lg shadow-md">
-                    <li><a href="/" class="block px-4 py-2 hover:bg-gray-100">Home</a></li>
-                    <li><a href="#visual-novel" class="block px-4 py-2 hover:bg-gray-100">Visual Novels</a></li>
-                    <li><a href="#simulation" class="block px-4 py-2 hover:bg-gray-100">Simulation Games</a></li>
-                    <li><a href="#rhythm" class="block px-4 py-2 hover:bg-gray-100">Rhythm Games</a></li>
-                    <li><a href="#about" class="block px-4 py-2 hover:bg-gray-100">About</a></li>
-                    <li><a href="#contact" class="block px-4 py-2 hover:bg-gray-100">Contact</a></li>
+          </form>
+        </div>
+      </header>
+
+      {/* 导航区域 */}
+      <main className="max-w-6xl mx-auto px-4 py-8">
+        <div className="flex flex-col md:flex-row gap-6">
+          <div className="md:w-1/2 space-y-6">
+            {navigationSections.slice(0, 4).map((section, index) => (
+              <div 
+                key={index} 
+                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+              >
+                <div className="bg-blue-50 px-4 py-3 border-b border-gray-200">
+                  <h2 className="text-xl font-semibold text-blue-700">{section.title}</h2>
+                </div>
+                <ul className="divide-y divide-gray-100">
+                  {section.items.map((item, itemIndex) => (
+                    <li key={itemIndex} className="group">
+                      <a 
+                        href={item.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="block px-4 py-3 hover:bg-blue-50 transition-colors duration-200 flex justify-between items-center"
+                      >
+                        <div>
+                          <span className="text-gray-700 group-hover:text-blue-600 font-medium">{item.name}</span>
+                          {item.description && (
+                            <p className="text-xs text-gray-500 mt-1">{item.description}</p>
+                          )}
+                        </div>
+                        <ExternalLink 
+                          className="text-gray-400 group-hover:text-blue-500" 
+                          size={16} 
+                        />
+                      </a>
+                    </li>
+                  ))}
                 </ul>
-            </div>
-        </div>
-    </header>
-    
-    <div class="container mx-auto px-4 py-8">
-        <!-- Search Bar -->
-        <div class="mb-8">
-            <form class="flex items-center">
-                <input type="text" placeholder="Search for games..." class="search-bar w-full px-4 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <button type="submit" class="apple-button ml-2">
-                    Search
-                </button>
-            </form>
-        </div>
-        
-        <div class="flex flex-wrap -mx-4">
-            <!-- Sidebar - Popular Games -->
-            <div class="sidebar w-full md:w-1/4 px-4 mb-8">
-                <div class="bg-white rounded-lg shadow-md p-4">
-                    <h2 class="text-xl font-bold mb-4 text-gray-800 border-b pb-2">Most Popular Games</h2>
-                    <ul class="space-y-4">
-                        <li class="flex items-center">
-                            <span class="text-2xl font-bold text-blue-500 mr-2">1</span>
-                            <div>
-                                <a href="#funkin" class="font-medium hover:text-blue-500">Friday Night Funkin'</a>
-                                <p class="text-sm text-gray-500">8.5M players</p>
-                            </div>
-                        </li>
-                        <li class="flex items-center">
-                            <span class="text-2xl font-bold text-blue-500 mr-2">2</span>
-                            <div>
-                                <a href="#our-life" class="font-medium hover:text-blue-500">Our Life: Beginnings & Always</a>
-                                <p class="text-sm text-gray-500">3.2M players</p>
-                            </div>
-                        </li>
-                        <li class="flex items-center">
-                            <span class="text-2xl font-bold text-blue-500 mr-2">3</span>
-                            <div>
-                                <a href="#six-cats" class="font-medium hover:text-blue-500">Six Cats Under</a>
-                                <p class="text-sm text-gray-500">1.8M players</p>
-                            </div>
-                        </li>
-                    </ul>
+              </div>
+            ))}
+          </div>
+          <div className="md:w-1/2 space-y-6">
+            {navigationSections.slice(4).map((section, index) => (
+              <div 
+                key={index} 
+                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+              >
+                <div className="bg-blue-50 px-4 py-3 border-b border-gray-200">
+                  <h2 className="text-xl font-semibold text-blue-700">{section.title}</h2>
                 </div>
-            </div>
-            
-            <!-- Main Content -->
-            <div class="main-content w-full md:w-3/4 px-4">
-                <h1 class="text-3xl md:text-4xl font-bold mb-8 text-gray-800">Play the Best Free Browser Games Online</h1>
-                
-                <!-- Visual Novel Category -->
-                <section id="visual-novel" class="mb-12">
-                    <h2 class="text-2xl font-bold mb-6 text-gray-800 category-visual-novel pl-3">Visual Novel Games</h2>
-                    
-                    <div class="game-card bg-white rounded-lg shadow-md overflow-hidden mb-8" id="our-life">
-                        <div class="p-4">
-                            <h3 class="text-xl font-bold mb-2">Our Life: Beginnings & Always</h3>
-                            <p class="text-gray-600 mb-4">Create your own character and experience love, friendship and personal growth in this immersive visual novel.</p>
-                            
-                            <div class="mb-4">
-                                <img src="/api/placeholder/800/400" alt="Our Life: Beginnings & Always - A customizable visual novel experience" class="w-full h-64 object-cover rounded-lg">
-                            </div>
-                            
-                            <div class="mb-4">
-                                <iframe src="https://gbpatch.itch.io/our-life" class="game-iframe"></iframe>
-                            </div>
-                            
-                            <div class="bg-gray-50 p-4 rounded-lg">
-                                <h4 class="font-bold mb-2">About The Game</h4>
-                                <p class="text-gray-700 mb-4">
-                                    "Our Life: Beginnings & Always" is an award-winning visual novel that lets you customize your character and experience a heartwarming coming-of-age story. Follow your character from childhood to adulthood alongside your neighbor, Cove Holden, with the freedom to develop your relationship however you choose.
-                                </p>
-                                <div class="flex flex-wrap text-sm">
-                                    <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded mr-2 mb-2">Visual Novel</span>
-                                    <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded mr-2 mb-2">Life Simulation</span>
-                                    <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded mr-2 mb-2">Romance</span>
-                                    <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded mr-2 mb-2">Customizable Character</span>
-                                </div>
-                            </div>
+                <ul className="divide-y divide-gray-100">
+                  {section.items.map((item, itemIndex) => (
+                    <li key={itemIndex} className="group">
+                      <a 
+                        href={item.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="block px-4 py-3 hover:bg-blue-50 transition-colors duration-200 flex justify-between items-center"
+                      >
+                        <div>
+                          <span className="text-gray-700 group-hover:text-blue-600 font-medium">{item.name}</span>
+                          {item.description && (
+                            <p className="text-xs text-gray-500 mt-1">{item.description}</p>
+                          )}
                         </div>
-                    </div>
-                </section>
-                
-                <!-- Simulation Category -->
-                <section id="simulation" class="mb-12">
-                    <h2 class="text-2xl font-bold mb-6 text-gray-800 category-simulation pl-3">Simulation Games</h2>
-                    
-                    <div class="game-card bg-white rounded-lg shadow-md overflow-hidden mb-8" id="six-cats">
-                        <div class="p-4">
-                            <h3 class="text-xl font-bold mb-2">Six Cats Under</h3>
-                            <p class="text-gray-600 mb-4">Run a funeral home for cats in this cozy management simulation with mysterious undertones.</p>
-                            
-                            <div class="mb-4">
-                                <img src="/api/placeholder/800/400" alt="Six Cats Under - Cat funeral home simulation game" class="w-full h-64 object-cover rounded-lg">
-                            </div>
-                            
-                            <div class="mb-4">
-                                <iframe src="https://teambeanloop.itch.io/six-cats-under" class="game-iframe"></iframe>
-                            </div>
-                            
-                            <div class="bg-gray-50 p-4 rounded-lg">
-                                <h4 class="font-bold mb-2">About The Game</h4>
-                                <p class="text-gray-700 mb-4">
-                                    "Six Cats Under" is a unique simulation game where you manage a funeral home for cats. Balance your business, solve mysteries about your feline clients, and uncover the secrets of the afterlife. This cozy yet somewhat macabre game combines business management with narrative elements for a truly unique gaming experience.
-                                </p>
-                                <div class="flex flex-wrap text-sm">
-                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded mr-2 mb-2">Simulation</span>
-                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded mr-2 mb-2">Management</span>
-                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded mr-2 mb-2">Cats</span>
-                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded mr-2 mb-2">Cozy</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                
-                <!-- Rhythm Category -->
-                <section id="rhythm" class="mb-12">
-                    <h2 class="text-2xl font-bold mb-6 text-gray-800 category-rhythm pl-3">Rhythm Games</h2>
-                    
-                    <div class="game-card bg-white rounded-lg shadow-md overflow-hidden mb-8" id="funkin">
-                        <div class="p-4">
-                            <h3 class="text-xl font-bold mb-2">Friday Night Funkin'</h3>
-                            <p class="text-gray-600 mb-4">Battle it out in rhythm-based musical showdowns to win your girlfriend's heart.</p>
-                            
-                            <div class="mb-4">
-                                <img src="/api/placeholder/800/400" alt="Friday Night Funkin' - Popular rhythm game with musical battles" class="w-full h-64 object-cover rounded-lg">
-                            </div>
-                            
-                            <div class="mb-4">
-                                <iframe src="https://ninja-muffin24.itch.io/funkin" class="game-iframe"></iframe>
-                            </div>
-                            
-                            <div class="bg-gray-50 p-4 rounded-lg">
-                                <h4 class="font-bold mb-2">About The Game</h4>
-                                <p class="text-gray-700 mb-4">
-                                    "Friday Night Funkin'" is a popular rhythm game where you play as Boyfriend, who must defeat a series of opponents in musical battles to win the heart of his Girlfriend. With its distinctive art style, catchy soundtrack, and engaging gameplay mechanics, it has become one of the most beloved indie rhythm games in recent years.
-                                </p>
-                                <div class="flex flex-wrap text-sm">
-                                    <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded mr-2 mb-2">Rhythm Game</span>
-                                    <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded mr-2 mb-2">Music</span>
-                                    <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded mr-2 mb-2">Indie</span>
-                                    <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded mr-2 mb-2">Challenging</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
+                        <ExternalLink 
+                          className="text-gray-400 group-hover:text-blue-500" 
+                          size={16} 
+                        />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
+      </main>
+
+      {/* 页脚 */}
+      <footer className="bg-white shadow-md py-4 text-center">
+        <p className="text-gray-500">© 2024 AI 导航站 | 精选 AI 资源导航</p>
+      </footer>
     </div>
-    
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-wrap">
-                <div class="w-full md:w-1/3 mb-6 md:mb-0">
-                    <h3 class="text-xl font-bold mb-4">Joyverse.online</h3>
-                    <p class="text-gray-400">Your ultimate destination for free browser games. Play the best visual novels, simulations, rhythm games, and more without downloads.</p>
-                </div>
-                
-                <div class="w-full md:w-1/3 mb-6 md:mb-0">
-                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="/" class="text-gray-400 hover:text-white">Home</a></li>
-                        <li><a href="#visual-novel" class="text-gray-400 hover:text-white">Visual Novels</a></li>
-                        <li><a href="#simulation" class="text-gray-400 hover:text-white">Simulation Games</a></li>
-                        <li><a href="#rhythm" class="text-gray-400 hover:text-white">Rhythm Games</a></li>
-                    </ul>
-                </div>
-                
-                <div class="w-full md:w-1/3">
-                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
-                    <p class="text-gray-400">Have questions or suggestions? We'd love to hear from you!</p>
-                    <a href="mailto:contact@joyverse.online" class="block mt-2 text-blue-400 hover:text-blue-300">contact@joyverse.online</a>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
-                <p>&copy; 2025 Joyverse.online. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-    
-    <script>
-        // Mobile menu toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuButton = document.querySelector('.mobile-menu');
-            const mobileMenuContent = document.querySelector('.mobile-menu.hidden');
-            
-            mobileMenuButton.addEventListener('click', function() {
-                mobileMenuContent.classList.toggle('hidden');
-            });
-            
-            // Search functionality
-            const searchForm = document.querySelector('form');
-            const searchInput = document.querySelector('input[type="text"]');
-            
-            searchForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const searchTerm = searchInput.value.toLowerCase();
-                
-                if (searchTerm) {
-                    // Simple search implementation
-                    const games = document.querySelectorAll('.game-card');
-                    let found = false;
-                    
-                    games.forEach(game => {
-                        const gameTitle = game.querySelector('h3').textContent.toLowerCase();
-                        const gameDescription = game.querySelector('p').textContent.toLowerCase();
-                        const gameDetails = game.querySelector('.bg-gray-50 p').textContent.toLowerCase();
-                        
-                        if (gameTitle.includes(searchTerm) || gameDescription.includes(searchTerm) || gameDetails.includes(searchTerm)) {
-                            game.style.display = 'block';
-                            found = true;
-                            
-                            // Scroll to the first matching game
-                            if (found) {
-                                game.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                                found = false; // To ensure we only scroll to the first match
-                            }
-                        } else {
-                            game.style.display = 'none';
-                        }
-                    });
-                    
-                    // Reset search results after 10 seconds
-                    setTimeout(() => {
-                        games.forEach(game => {
-                            game.style.display = 'block';
-                        });
-                    }, 10000);
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+  );
+};
+
+export default AINavigationSite;
