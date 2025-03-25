@@ -1,110 +1,68 @@
 import React, { useState } from 'react';
-import { Search, ExternalLink } from 'lucide-react';
+import { Search } from 'lucide-react';
 
 const AINavigationSite = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const navigationSections = [
     {
-      title: "需求调研",
-      items: [
-        { name: "谷歌下拉词", url: "https://www.searchsuggest.tips/?keyword=" },
-        { name: "Toolify榜单", url: "https://www.toolify.ai/Best-AI-Tools-revenue" },
-        { name: "AI需求列表", url: "https://theresanaiforthat.com/requests" },
-        { name: "关键词难度", url: "https://ahrefs.com/keyword-difficulty" }
+      title: '需求和关键词调研',
+      links: [
+        { name: '谷歌下拉词', url: 'https://www.searchsuggest.tips/?keyword=' },
+        { name: 'Toolify榜单', url: 'https://www.toolify.ai/Best-AI-Tools-revenue' },
+        { name: 'AI需求列表', url: 'https://theresanaiforthat.com/requests' },
+        { name: '关键词难度', url: 'https://ahrefs.com/keyword-difficulty' }
       ]
     },
     {
-      title: "上站必备",
-      items: [
-        { name: "域名查询", url: "https://leandomainsearch.com/" },
-        { name: "域名注册", url: "https://spaceshipi.com" },
-        { name: "代码托管", url: "https://github.com" },
-        { name: "数据后台", url: "https://search.google.com/search-console" }
+      title: '上站必备',
+      links: [
+        { name: '域名查询', url: 'https://leandomainsearch.com/' },
+        { name: '域名注册', url: 'https://spaceshipi.com' },
+        { name: '代码托管', url: 'https://github.com' },
+        { name: '数据后台', url: 'https://search.google.com/search-console' }
       ]
     },
     {
-      title: "竞品调研",
-      items: [
-        { name: "流量分析", url: "https://aitdk.com" },
-        { name: "外链查看", url: "https://ahrefs.com/free-seo-tools" },
-        { name: "网站关键词", url: "https://semrush.com" }
+      title: '竞品调研',
+      links: [
+        { name: '流量和关键词', url: 'https://aitdk.com' },
+        { name: '外链查看', url: 'https://ahrefs.com/free-seo-tools' },
+        { name: '网站关键词', url: 'https://semrush.com' }
       ]
     },
     {
-      title: "项目模版",
-      items: [
-        { name: "Dynamic Log", url: "https://github.com/openRin/Rin" },
-        { name: "NextJS Boilerplate", url: "https://github.com/ixartz/Next-js-Boilerplate" },
-        { name: "SaaS Boilerplate", url: "https://github.com/ixartz/SaaS-Boilerplate" },
-        { name: "免费落地页模版", url: "https://github.com/ixartz/Next-JS-Landing-Page-Starter-Template" }
-      ]
-    },
-    {
-      title: "导航站资源",
-      items: [
-        { name: "Fre123资源", url: "https://github.com/fre123-com/fre123-nav/" },
-        { name: "静态响应式网站", url: "https://github.com/WebStackPage/WebStackPage.github.io" },
-        { name: "GPTs Store", url: "https://github.com/all-in-aigc/gpts-works" }
-      ]
-    },
-    {
-      title: "行业资讯",
-      items: [
-        { 
-          name: "Reddit子社区", 
-          url: "https://liberating-doll-b8a.notion.site/Reddit-1a8e8aed91b18021839ecba8b74e530b",
-          description: "AI相关Reddit社区资源"
-        },
-        { 
-          name: "谷歌搜索中心SEO", 
-          url: "https://developers.google.com/search/docs/fundamentals/creating-helpful-content?hl=zh-cn",
-          description: "SEO基础知识指南"
-        }
-      ]
-    },
-    {
-      title: "创业洞察",
-      items: [
-        { 
-          name: "独立开发者指南", 
-          url: "https://scys.com/articleDetail/xq_topic/1525814845844482",
-          description: "关于成为独立开发者的深度思考"
-        },
-        { 
-          name: "AI编程赛道", 
-          url: "https://scys.com/articleDetail/xq_topic/2858151258225521",
-          description: "构建业务而非简单应用"
-        },
-        { 
-          name: "创意变现新时代", 
-          url: "https://scys.com/articleDetail/xx_topic/4848511545851418",
-          description: "只靠想法就能赚钱的时代"
-        }
+      title: '模版资源',
+      links: [
+        { name: 'Dynamic Log模版', url: 'https://github.com/openRin/Rin' },
+        { name: 'NextJS Boilerplate', url: 'https://github.com/ixartz/Next-js-Boilerplate' },
+        { name: 'SaaS Boilerplate', url: 'https://github.com/ixartz/SaaS-Boilerplate' },
+        { name: '导航站模版', url: 'https://github.com/fre123-com/fre123-nav/' }
       ]
     }
   ];
 
   const handleSearch = (e) => {
     e.preventDefault();
-    // 搜索逻辑
-    console.log('搜索:', searchTerm);
+    if (searchTerm) {
+      window.open(`https://www.google.com/search?q=${encodeURIComponent(searchTerm)}`, '_blank');
+    }
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen text-gray-900">
-      {/* 头部搜索区域 */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-6xl mx-auto px-4 py-6">
-          <h1 className="text-3xl font-bold text-center text-blue-600 mb-4">AI 导航站</h1>
-          <form onSubmit={handleSearch} className="max-w-xl mx-auto">
+    <div className="min-h-screen bg-gray-50 text-gray-900 font-sans">
+      {/* Header with Search */}
+      <header className="bg-white shadow-md py-6 px-4">
+        <div className="max-w-4xl mx-auto flex items-center">
+          <h1 className="text-2xl font-bold text-blue-600 mr-6">AI导航站</h1>
+          <form onSubmit={handleSearch} className="flex-grow">
             <div className="relative">
               <input 
                 type="text" 
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="搜索资源、工具或网站..." 
-                className="w-full pl-10 pr-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="搜索AI工具和资源..." 
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <Search 
                 className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" 
@@ -115,36 +73,27 @@ const AINavigationSite = () => {
         </div>
       </header>
 
-      {/* 导航区域 */}
+      {/* Main Content */}
       <main className="max-w-6xl mx-auto px-4 py-8">
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 gap-6">
           {navigationSections.map((section, index) => (
             <div 
               key={index} 
-              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+              className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
             >
-              <div className="bg-blue-50 px-4 py-3 border-b border-gray-200">
-                <h2 className="text-xl font-semibold text-blue-700">{section.title}</h2>
-              </div>
-              <ul className="divide-y divide-gray-100">
-                {section.items.map((item, itemIndex) => (
-                  <li key={itemIndex} className="group">
+              <h2 className="text-xl font-semibold text-blue-700 mb-4 border-b pb-2">
+                {section.title}
+              </h2>
+              <ul className="space-y-2">
+                {section.links.map((link, linkIndex) => (
+                  <li key={linkIndex}>
                     <a 
-                      href={item.url} 
+                      href={link.url} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="block px-4 py-3 hover:bg-blue-50 transition-colors duration-200 flex justify-between items-center"
+                      className="text-blue-600 hover:text-blue-800 hover:underline transition-colors"
                     >
-                      <div>
-                        <span className="text-gray-700 group-hover:text-blue-600 font-medium">{item.name}</span>
-                        {item.description && (
-                          <p className="text-xs text-gray-500 mt-1">{item.description}</p>
-                        )}
-                      </div>
-                      <ExternalLink 
-                        className="text-gray-400 group-hover:text-blue-500" 
-                        size={16} 
-                      />
+                      {link.name}
                     </a>
                   </li>
                 ))}
@@ -154,9 +103,11 @@ const AINavigationSite = () => {
         </div>
       </main>
 
-      {/* 页脚 */}
-      <footer className="bg-white shadow-md py-4 text-center">
-        <p className="text-gray-500">© 2024 AI 导航站 | 精选 AI 资源导航</p>
+      {/* Footer */}
+      <footer className="bg-white shadow-md py-4 mt-8">
+        <div className="max-w-4xl mx-auto text-center text-gray-500">
+          © 2024 AI导航站 | 资源收集导航
+        </div>
       </footer>
     </div>
   );
